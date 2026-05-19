@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AMP Design Team — Dashboard</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=JetBrains+Mono:wght@400;500&family=Barlow:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <!-- ── SIDEBAR ── -->
+      <nav class="nav">
+        <div class="nav-logo">
+          <div class="amp">AMP</div>
+          <div class="sub">Design Team</div>
+        </div>
+
+        <div class="nav-section">
+          <div class="nav-label">Main</div>
+          <a class="nav-item active"><span class="icon">⬡</span> Home</a>
+          <a class="nav-item"
+            ><span class="icon">💰</span> Budget <span class="badge">2</span></a
+          >
+          <a class="nav-item"><span class="icon">📄</span> Invoices</a>
+          <a class="nav-item"><span class="icon">📦</span> Inventory</a>
+        </div>
+
+        <div class="nav-section">
+          <div class="nav-label">Tools</div>
+          <a class="nav-item"><span class="icon">📐</span> Projects</a>
+          <a class="nav-item"><span class="icon">🗂️</span> Clients</a>
+          <a class="nav-item"><span class="icon">📊</span> Reports</a>
+        </div>
+
+        <div class="nav-section">
+          <div class="nav-label">System</div>
+          <a class="nav-item"><span class="icon">⚙️</span> Settings</a>
+        </div>
+
+        <div class="nav-bottom">
+          <div class="avatar">P1</div>
+          <div class="nav-user">
+            <div class="name">Partner 1</div>
+            <div class="role">Tech Lead</div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- ── MAIN CONTENT ── -->
+      <div class="main">
+        <div class="topbar">
+          <div class="topbar-title">HOME</div>
+          <div class="topbar-dot"></div>
+          <div class="topbar-date" id="clock"></div>
+        </div>
+
+        <div class="content">
+          <!-- WORKSPACE WINDOWS -->
+          <div class="workspace-panel">
+            <div class="section-head">
+              <h2>Workspace</h2>
+              <div class="line"></div>
+              <div class="pill">+ Window</div>
+            </div>
+
+            <div class="workspace-grid" id="workspaceGrid">
+              <div class="workspace-window">
+                <div class="win-header">
+                  <span class="win-num">01</span>
+                  <span class="win-title">Tool Cart Locking Ring — Rev 3</span>
+                  <div class="win-controls">
+                    <div class="win-btn">Edit</div>
+                    <div class="win-btn">⛶</div>
+                  </div>
+                </div>
+                <div class="win-body active">
+                  <div class="fake-doc">
+                    <div class="fake-line"></div>
+                    <div class="fake-line short"></div>
+                    <div class="fake-line med"></div>
+                    <div class="fake-line"></div>
+                    <div class="fake-line short"></div>
+                    <div class="fake-line med"></div>
+                    <div class="fake-line short"></div>
+                  </div>
+                </div>
+                <div class="last-edit">Last edit: P2 · 2h ago</div>
+              </div>
+
+              <div class="workspace-window">
+                <div class="win-header">
+                  <span class="win-num">02</span>
+                  <span class="win-title"
+                    >Etsy Listing Copy — Interior Clips</span
+                  >
+                  <div class="win-controls">
+                    <div class="win-btn">Edit</div>
+                    <div class="win-btn">⛶</div>
+                  </div>
+                </div>
+                <div class="win-body active">
+                  <div class="fake-doc">
+                    <div class="fake-line med"></div>
+                    <div class="fake-line"></div>
+                    <div class="fake-line short"></div>
+                    <div class="fake-line med"></div>
+                    <div class="fake-line"></div>
+                  </div>
+                </div>
+                <div class="last-edit">Last edit: P1 · 4h ago</div>
+              </div>
+
+              <div class="workspace-window">
+                <div class="win-header">
+                  <span class="win-num">03</span>
+                  <span class="win-title"
+                    >Magazine Auto-Loader — Concept Notes</span
+                  >
+                  <div class="win-controls">
+                    <div class="win-btn">Edit</div>
+                    <div class="win-btn">⛶</div>
+                  </div>
+                </div>
+                <div class="win-body active">
+                  <div class="fake-doc">
+                    <div class="fake-line short"></div>
+                    <div class="fake-line"></div>
+                    <div class="fake-line med"></div>
+                    <div class="fake-line short"></div>
+                    <div class="fake-line"></div>
+                  </div>
+                </div>
+                <div class="last-edit">Last edit: P1 · Yesterday</div>
+              </div>
+
+              <div class="workspace-window">
+                <div class="win-header">
+                  <span class="win-num">04</span>
+                  <span class="win-title" contenteditable="true"
+                    >Empty — Click to name</span
+                  >
+                  <div class="win-controls">
+                    <div class="win-btn">Edit</div>
+                    <div class="win-btn">⛶</div>
+                  </div>
+                </div>
+                <div class="win-body empty">
+                  <span class="win-empty-icon">+</span>
+                  <span>Open or create a workspace</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- INDUSTRY NEWS FEED -->
+          <div class="bottom-left card">
+            <div class="section-head">
+              <h2>Industry Feed</h2>
+              <div class="line"></div>
+              <div class="pill">Configure</div>
+            </div>
+
+            <div class="news-feed">
+              <div class="news-item">
+                <div class="news-tag tag-law">Legislation</div>
+                <div class="news-content">
+                  <div class="news-title">
+                    Senate bill could loosen suppressor transfer rules — NFA
+                    wait times targeted
+                  </div>
+                  <div class="news-meta">AP · 38 min ago</div>
+                </div>
+              </div>
+
+              <div class="news-item">
+                <div class="news-tag tag-industry">Industry</div>
+                <div class="news-content">
+                  <div class="news-title">
+                    3D printing market for automotive aftermarket expected to
+                    hit $4.2B by 2027
+                  </div>
+                  <div class="news-meta">Forbes · 2h ago</div>
+                </div>
+              </div>
+
+              <div class="news-item">
+                <div class="news-tag tag-market">Market</div>
+                <div class="news-content">
+                  <div class="news-title">
+                    PLA filament costs down 12% — bulk order timing window open
+                  </div>
+                  <div class="news-meta">3DPrint.com · 5h ago</div>
+                </div>
+              </div>
+
+              <div class="news-item">
+                <div class="news-tag tag-alert">Alert</div>
+                <div class="news-content">
+                  <div class="news-title">
+                    Etsy updates seller fee structure effective next quarter
+                  </div>
+                  <div class="news-meta">Etsy Blog · Yesterday</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TEAM TO-DO -->
+          <div class="bottom-right card">
+            <div class="section-head">
+              <h2>Team To-Do</h2>
+              <div class="line"></div>
+              <div class="pill">Filter</div>
+            </div>
+
+            <div class="todo-input-row">
+              <input
+                class="todo-input"
+                id="todoInput"
+                type="text"
+                placeholder="Add a task... (press Enter)"
+              />
+              <button class="todo-add-btn" onclick="addTodo()">ADD</button>
+            </div>
+
+            <div class="todo-list" id="todoList">
+              <!-- Populated by app.js -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="app.js"></script>
+  </body>
+</html>
