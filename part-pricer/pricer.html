@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AMP Print Pricer</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=JetBrains+Mono:wght@400;500&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="pricer.css"/>
+</head>
+<body>
+
+<div class="no-print">
+<h1>AMP Print Pricer</h1>
+<div class="sub">Cost analysis & margin calculator</div>
+
+<div class="print-card">
+  <div class="card-title">Part info</div>
+  <div class="print-fields">
+    <div class="field" style="margin-bottom:0">
+      <label>Part name</label>
+      <input type="text" id="partName" placeholder="e.g. Tool Cart Locking Ring" oninput="calc()"/>
+    </div>
+    <div class="field" style="margin-bottom:0">
+      <label>Part number</label>
+      <input type="text" id="partNumber" placeholder="e.g. AMP-001" oninput="calc()"/>
+    </div>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <div class="card-title">Material</div>
+    <div class="field">
+      <label>Spool cost</label>
+      <div class="input-wrap"><span class="prefix">$</span><input type="number" id="spoolCost" value="14.00" step="0.01" oninput="calc()"/></div>
+    </div>
+    <div class="field">
+      <label>Spool weight (g)</label>
+      <div class="input-wrap"><input type="number" id="spoolWeight" value="1000" step="1" class="no-prefix has-suffix-short"/><span class="suffix">g</span></div>
+    </div>
+    <div class="field">
+      <label>Filament per part (g)</label>
+      <div class="input-wrap"><input type="number" id="filamentPerPart" value="1.61" step="0.01" class="no-prefix has-suffix-short"/><span class="suffix">g</span></div>
+    </div>
+    <div class="field">
+      <label>Failure rate</label>
+      <div class="input-wrap"><input type="number" id="failureRate" value="7.5" step="0.5" class="no-prefix has-suffix-short"/><span class="suffix">%</span></div>
+    </div>
+    <div class="field">
+      <label>Pack quantity</label>
+      <div class="input-wrap"><input type="number" id="packQty" value="2" step="1" min="1" class="no-prefix has-suffix-short" oninput="calc()"/><span class="suffix">pcs</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Labor</div>
+    <div class="field">
+      <label>Print time per part (min)</label>
+      <div class="input-wrap"><input type="number" id="printTime" value="10.88" step="0.1" class="no-prefix has-suffix-short"/><span class="suffix">min</span></div>
+    </div>
+    <div class="field">
+      <label>Hands-on time per part (min)</label>
+      <div class="input-wrap"><input type="number" id="handTime" value="0.42" step="0.01" class="no-prefix has-suffix-short"/><span class="suffix">min</span></div>
+    </div>
+    <div class="field">
+      <label>Labor rate</label>
+      <div class="input-wrap"><span class="prefix">$</span><input type="number" id="laborRate" value="20" step="1" class="has-suffix" oninput="calc()"/><span class="suffix">/hr</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Platform (Etsy)</div>
+    <div class="field">
+      <label>Transaction fee</label>
+      <div class="input-wrap"><input type="number" id="txFee" value="6.5" step="0.1" class="no-prefix has-suffix-short"/><span class="suffix">%</span></div>
+    </div>
+    <div class="field">
+      <label>Payment processing fee</label>
+      <div class="input-wrap"><input type="number" id="payFee" value="3.0" step="0.1" class="no-prefix has-suffix-short"/><span class="suffix">%</span></div>
+    </div>
+    <div class="field">
+      <label>Listing fee (per sale)</label>
+      <div class="input-wrap"><span class="prefix">$</span><input type="number" id="listingFee" value="0.20" step="0.01" oninput="calc()"/></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Packaging & overhead</div>
+    <div class="field">
+      <label>Packaging cost per order</label>
+      <div class="input-wrap"><span class="prefix">$</span><input type="number" id="packagingCost" value="0.15" step="0.01" oninput="calc()"/></div>
+    </div>
+    <div class="field">
+      <label>Shipping charged to buyer</label>
+      <div class="input-wrap"><span class="prefix">$</span><input type="number" id="shippingCharged" value="4.50" step="0.25" oninput="calc()"/></div>
+    </div>
+    <div class="field">
+      <label>Actual shipping cost</label>
+      <div class="input-wrap"><span class="prefix">$</span><input type="number" id="shippingActual" value="4.50" step="0.25" oninput="calc()"/></div>
+    </div>
+  </div>
+</div>
+
+<div class="results">
+  <div class="results-title">Results — <span id="packLabel">2x pack</span></div>
+  <div class="results-grid">
+    <div class="metric"><div class="metric-label">Material cost</div><div class="metric-value" id="rMaterial">—</div></div>
+    <div class="metric"><div class="metric-label">Labor cost</div><div class="metric-value" id="rLabor">—</div></div>
+    <div class="metric"><div class="metric-label">Platform fees</div><div class="metric-value" id="rFees">—</div></div>
+    <div class="metric"><div class="metric-label">Total cost</div><div class="metric-value accent" id="rTotal">—</div></div>
+  </div>
+
+  <div class="price-row">
+    <div class="price-label">Sale price</div>
+    <div class="price-input-wrap"><span class="price-prefix">$</span><input type="number" id="salePrice" value="12.99" step="0.01" oninput="calc()"/></div>
+    <div style="display:flex;align-items:center;gap:10px;flex:1;justify-content:flex-end">
+      <div class="margin-bar-wrap"><div class="margin-bar" id="marginBar"></div></div>
+      <div class="margin-display" id="marginDisplay">—</div>
+    </div>
+  </div>
+
+  <div class="breakdown" id="breakdown"></div>
+</div>
+
+<div style="display:flex;justify-content:flex-end">
+  <button class="print-btn no-print" onclick="printReport()">Print report</button>
+</div>
+</div>
+
+<div class="print-only" id="printReport"></div>
+
+<script src="pricer.js"></script>
+</body>
+</html>
